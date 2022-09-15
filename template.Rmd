@@ -1,0 +1,51 @@
+---
+title: "Simple document"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+# Section 3
+
+This is going to make a plot
+echo was used to display or markdwon the code
+
+```{r chunk_scatterplot, echo=FALSE}
+library(tidyverse)
+plot_df=
+  tibble(
+    x=rnorm(n=1000),
+    y=1+2*x+rnorm(n=1000)
+  )
+ggplot(plot_df,aes(x,y))+geom_point()
+```
+
+```{r learning_accessment_1}
+la_df=tibble(
+  x=rnorm(500,mean = 1),
+  logical=x>0,
+  abs_norm=abs(x)
+)
+ggplot(la_df,aes(x=abs_norm))+geom_histogram()
+```
+* The mean of the sample is `r mean(pull(la_df, x))`
+* The median of the sample is `r median(pull(la_df, x))`
+* The median of the sample is `r median(pull(la_df, x))`
